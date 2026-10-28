@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Página temática dedicada a Mordecai y sus aventuras en el parque.">
+    <title>Mordecai | Aventuras en el parque</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="main-nav" aria-label="Navegación principal">
+            <a class="brand" href="#inicio">MORDECAI</a>
+            <ul class="nav-list">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#personaje">El personaje</a></li>
+                <li><a href="#aventuras">Aventuras</a></li>
+                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#reloj">Reloj</a></li>
+                <li><button class="theme-toggle" id="theme-toggle" type="button" aria-label="Activar modo nocturno">Modo noche</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero-section">
+            <div class="hero-content">
+                <p class="eyebrow">Una vida normal... más o menos</p>
+                <h1>Bienvenido al parque</h1>
+                <p>
+                    Acompaña a Mordecai en sus aventuras, donde un día tranquilo
+                    puede convertirse en una misión completamente inesperada.
+                </p>
+                <a class="button" href="#aventuras">Ver aventuras</a>
+                <button class="button button-secondary" id="quote-button" type="button">Dame una frase</button>
+                <p class="quote-message" id="quote-message" aria-live="polite"></p>
+            </div>
+            <div class="hero-character" aria-label="Ilustración decorativa de Mordecai">
+                <span class="character-icon" aria-hidden="true">🐦</span>
+                <p>¡Esto se salió de control!</p>
+            </div>
+        </section>
+
+        <section id="personaje" class="about-section">
+            <div class="section-heading">
+                <p class="eyebrow">Conoce al protagonista</p>
+                <h2>Mordecai</h2>
+            </div>
+            <div class="about-content">
+                <p>
+                    Mordecai es un arrendajo azul trabajador, creativo y algo
+                    impulsivo. Junto a su mejor amigo Rigby, se encarga de
+                    mantener el parque en orden, aunque sus planes rara vez
+                    terminan como esperaba.
+                </p>
+                <dl class="character-details">
+                    <div>
+                        <dt>Rol</dt>
+                        <dd>Encargado del parque</dd>
+                    </div>
+                    <div>
+                        <dt>Compañero</dt>
+                        <dd>Rigby</dd>
+                    </div>
+                    <div>
+                        <dt>Especialidad</dt>
+                        <dd>Convertir lo cotidiano en una aventura</dd>
+                    </div>
+                </dl>
+            </div>
+            <div class="character-selector">
+                <p class="selector-label">Conoce a los personajes</p>
+                <div class="character-buttons" role="group" aria-label="Seleccionar personaje">
+                    <button class="character-button active" type="button" data-character="mordecai">Mordecai</button>
+                    <button class="character-button" type="button" data-character="rigby">Rigby</button>
+                    <button class="character-button" type="button" data-character="benson">Benson</button>
+                </div>
+                <article class="selected-character" id="selected-character" aria-live="polite">
+                    <h3>Mordecai</h3>
+                    <p>Un arrendajo azul creativo que siempre intenta hacer lo correcto.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="aventuras" class="adventures-section">
+            <div class="section-heading">
+                <p class="eyebrow">Historias inolvidables</p>
+                <h2>Las aventuras del parque</h2>
+            </div>
+            <div class="adventure-cards">
+                <article class="adventure-card">
+                    <span class="card-number">01</span>
+                    <h3>Un día cualquiera</h3>
+                    <p>Lo que empieza como una tarea sencilla termina en un desafío imposible.</p>
+                </article>
+                <article class="adventure-card">
+                    <span class="card-number">02</span>
+                    <h3>Trabajo en equipo</h3>
+                    <p>Con Rigby a su lado, Mordecai descubre que todo problema tiene una solución.</p>
+                </article>
+                <article class="adventure-card">
+                    <span class="card-number">03</span>
+                    <h3>Hora de relajarse</h3>
+                    <p>Después de salvar el día, siempre queda tiempo para música, juegos y amigos.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="galeria" class="gallery-section">
+            <div class="section-heading">
+                <p class="eyebrow">Momentos del parque</p>
+                <h2>Galería de recuerdos</h2>
+            </div>
+            <div class="gallery-grid">
+                <figure class="gallery-item gallery-item-large">
+                    <div class="gallery-placeholder">
+                        <img src="assets/images/Mordecai-parque.png" alt="Mordecai y Rigby en el parque">
+                    </div>
+                    <figcaption>El parque, donde todo comienza</figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <div class="gallery-placeholder">
+                        <img src="assets/images/mordecai-juegos.png" alt="Mordecai y Rigby jugando en el sofá">
+                    </div>
+                    <figcaption>Una pausa entre aventuras</figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <div class="gallery-placeholder">
+                        <img src="assets/images/mordecai-musica.png" alt="Mordecai escuchando música">
+                    </div>
+                    <figcaption>La banda sonora de un buen día</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section id="trivia" class="trivia-section">
+            <div class="section-heading">
+                <p class="eyebrow">Pon a prueba tus conocimientos</p>
+                <h2>Trivia del parque</h2>
+            </div>
+            <div class="quiz-card" id="quiz-card">
+                <p class="quiz-progress" id="quiz-progress">Pregunta 1 de 3</p>
+                <h3 id="quiz-question">¿Cuál es el trabajo de Mordecai?</h3>
+                <div class="quiz-options" id="quiz-options"></div>
+                <p class="quiz-feedback" id="quiz-feedback" aria-live="polite"></p>
+                <button class="button" id="next-question" type="button" disabled>Siguiente pregunta</button>
+            </div>
+        </section>
+
+        <section id="reloj" class="park-clock-section">
+            <div class="section-heading">
+                <p class="eyebrow">Hora oficial del parque</p>
+                <h2>Reloj del parque</h2>
+            </div>
+            <div class="park-clock-card">
+                <div class="clock-face" aria-hidden="true">🕒</div>
+                <div>
+                    <p class="clock-time" id="park-time" aria-live="polite">--:--:--</p>
+                    <p class="clock-date" id="park-date">Cargando fecha...</p>
+                    <p class="clock-zone">Zona horaria: Chile continental</p>
+                    <p class="clock-message" id="park-message" aria-live="polite">Consultando la hora del parque...</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>Hecho para los fanáticos de Mordecai y sus aventuras.</p>
+        <a href="#inicio">Volver al inicio</a>
+    </footer>
+
+    <div class="modal" id="gallery-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close" type="button" aria-label="Cerrar galería">&times;</button>
+            <div class="modal-icon" id="modal-icon" aria-hidden="true"></div>
+            <h2 id="modal-title"></h2>
+            <p id="modal-description"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,771 @@
+﻿:root {
+    --sky-blue: #2389c9;
+    --deep-blue: #0b3152;
+    --night-blue: #071d31;
+    --feather-blue: #166aa3;
+    --cream: #f7f1df;
+    --white: #ffffff;
+    --yellow: #f7c948;
+    --orange: #e88332;
+    --text: #17212b;
+    --muted-text: #435568;
+    --surface: #ffffff;
+    --border: rgba(11, 49, 82, 0.16);
+    --shadow: 0 18px 40px rgba(7, 29, 49, 0.16);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--cream);
+    color: var(--text);
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    line-height: 1.6;
+}
+
+body.night-mode {
+    --cream: #101a24;
+    --text: #f3f7fa;
+    --muted-text: #d3e0e8;
+    --deep-blue: #0a2944;
+    --surface: #182b3d;
+}
+
+body.night-mode .trivia-section {
+    background: #0d2539;
+}
+
+body.night-mode .selector-label,
+body.night-mode .about-section h2,
+body.night-mode .about-section h3,
+body.night-mode .gallery-section h2,
+body.night-mode .trivia-section h2,
+body.night-mode .selected-character h3,
+body.night-mode .character-details dt,
+body.night-mode .character-button,
+body.night-mode figcaption,
+body.night-mode .quiz-card h3,
+body.night-mode .modal-close {
+    color: var(--text);
+}
+
+body.night-mode .adventure-card h3 {
+    color: var(--text);
+}
+
+body.night-mode .adventure-card,
+body.night-mode .selected-character,
+body.night-mode .character-details div,
+body.night-mode .gallery-item,
+body.night-mode .quiz-card,
+body.night-mode .modal-content {
+    color: var(--muted-text);
+}
+
+body.night-mode .character-button.active,
+body.night-mode .character-button:hover,
+body.night-mode .character-button:focus-visible {
+    color: var(--white);
+}
+
+body.night-mode .quiz-option.correct {
+    background: #245c35;
+    color: #d7f0dc;
+}
+
+body.night-mode .quiz-option.incorrect {
+    background: #6b2929;
+    color: #f9dada;
+}
+
+a {
+    color: inherit;
+}
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--night-blue);
+    box-shadow: 0 4px 16px rgba(7, 29, 49, 0.22);
+}
+
+.main-nav {
+    align-items: center;
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 1180px;
+    padding: 1rem 2rem;
+}
+
+.brand {
+    color: var(--yellow);
+    font-size: 1.35rem;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    text-decoration: none;
+}
+
+.nav-list {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+}
+
+.nav-list a,
+.site-footer a,
+.theme-toggle {
+    color: var(--white);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.nav-list a {
+    border-bottom: 2px solid transparent;
+    padding: 0.35rem 0;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-list a:hover,
+.nav-list a:focus-visible {
+    border-color: var(--yellow);
+    color: var(--yellow);
+}
+
+.theme-toggle,
+.character-button {
+    background: transparent;
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    cursor: pointer;
+    font: inherit;
+    padding: 0.35rem 0.75rem;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+    background: var(--yellow);
+    color: var(--night-blue);
+}
+
+.hero-section {
+    align-items: center;
+    background:
+        radial-gradient(circle at 85% 20%, rgba(247, 201, 72, 0.28), transparent 22rem),
+        linear-gradient(135deg, var(--sky-blue), var(--deep-blue));
+    color: var(--white);
+    display: grid;
+    gap: 3rem;
+    grid-template-columns: minmax(0, 1.3fr) minmax(250px, 0.7fr);
+    min-height: 590px;
+    overflow: hidden;
+    padding: 6rem max(2rem, calc((100% - 1080px) / 2));
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.eyebrow {
+    color: var(--orange);
+    font-size: 0.85rem;
+    font-weight: 900;
+    letter-spacing: 0.16em;
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+}
+
+.hero-section .eyebrow {
+    color: var(--yellow);
+}
+
+h1,
+h2,
+h3 {
+    color: var(--deep-blue);
+    line-height: 1.1;
+}
+
+h1 {
+    color: var(--white);
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    margin-bottom: 1.4rem;
+}
+
+h2 {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+}
+
+h3 {
+    font-size: 1.35rem;
+}
+
+.hero-content > p:not(.eyebrow) {
+    font-size: 1.15rem;
+    max-width: 580px;
+}
+
+.button {
+    background: var(--yellow);
+    border: 2px solid var(--yellow);
+    border-radius: 999px;
+    color: var(--night-blue);
+    display: inline-block;
+    font-weight: 900;
+    margin-top: 2rem;
+    padding: 0.85rem 1.6rem;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.button-secondary {
+    background: transparent;
+    border-color: var(--white);
+    color: var(--white);
+    margin-left: 0.75rem;
+}
+
+.button-secondary:hover,
+.button-secondary:focus-visible {
+    background: var(--white);
+    color: var(--deep-blue);
+}
+
+.quote-message {
+    color: var(--yellow);
+    font-style: italic;
+    font-weight: 700;
+    margin-top: 1rem;
+    min-height: 1.6em;
+}
+
+.button:hover,
+.button:focus-visible {
+    background: var(--white);
+    border-color: var(--white);
+    color: var(--deep-blue);
+    transform: translateY(-3px);
+}
+
+.hero-character {
+    align-items: center;
+    background: rgba(255, 255, 255, 0.13);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    justify-content: center;
+    justify-self: center;
+    text-align: center;
+    width: 300px;
+}
+
+.character-icon {
+    font-size: 7rem;
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+
+.hero-character p {
+    color: var(--yellow);
+    font-weight: 900;
+}
+
+.about-section,
+.adventures-section,
+.gallery-section {
+    margin: 0 auto;
+    max-width: 1180px;
+    padding: 6rem 2rem;
+}
+
+.about-section {
+    align-items: start;
+    display: grid;
+    gap: 4rem;
+    grid-template-columns: 0.8fr 1.2fr;
+}
+
+.about-content {
+    color: var(--muted-text);
+    font-size: 1.08rem;
+}
+
+.character-selector {
+    grid-column: 1 / -1;
+    margin-top: 1rem;
+}
+
+.selector-label {
+    color: var(--deep-blue);
+    font-weight: 900;
+    margin-bottom: 0.75rem;
+}
+
+.character-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.character-button {
+    border-color: var(--sky-blue);
+    color: var(--deep-blue);
+    font-weight: 700;
+}
+
+.character-button:hover,
+.character-button:focus-visible,
+.character-button.active {
+    background: var(--sky-blue);
+    color: var(--white);
+}
+
+.selected-character {
+    background: var(--surface);
+    border-left: 5px solid var(--yellow);
+    border-radius: 0 10px 10px 0;
+    box-shadow: 0 8px 20px rgba(7, 29, 49, 0.08);
+    margin-top: 1rem;
+    padding: 1.25rem;
+}
+
+.selected-character h3 {
+    margin-bottom: 0.45rem;
+}
+
+.character-details {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 2rem;
+}
+
+.character-details div {
+    background: var(--surface);
+    border-left: 4px solid var(--sky-blue);
+    border-radius: 0 10px 10px 0;
+    box-shadow: 0 8px 20px rgba(7, 29, 49, 0.08);
+    padding: 1rem;
+}
+
+dt {
+    color: var(--deep-blue);
+    font-size: 0.8rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+dd {
+    font-size: 0.95rem;
+    margin-top: 0.25rem;
+}
+
+.adventures-section {
+    max-width: none;
+    padding-left: max(2rem, calc((100% - 1080px) / 2));
+    padding-right: max(2rem, calc((100% - 1080px) / 2));
+}
+
+.adventures-section,
+.site-footer {
+    background: var(--deep-blue);
+    color: var(--white);
+}
+
+.adventures-section h2 {
+    color: var(--white);
+}
+
+.adventures-section .eyebrow {
+    color: var(--yellow);
+}
+
+.adventure-cards {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 2.5rem;
+}
+
+.adventure-card {
+    background: var(--surface);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    color: var(--muted-text);
+    padding: 2rem;
+    transition: transform 0.2s ease;
+}
+
+.adventure-card:hover {
+    transform: translateY(-6px);
+}
+
+.adventure-card h3 {
+    margin: 1.5rem 0 0.75rem;
+}
+
+.card-number {
+    color: var(--orange);
+    font-size: 1.3rem;
+    font-weight: 900;
+}
+
+.gallery-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 2fr 1fr;
+    margin-top: 2.5rem;
+}
+
+.gallery-item {
+    background: var(--surface);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.gallery-item-large {
+    grid-row: span 2;
+}
+
+.gallery-placeholder {
+    background: linear-gradient(135deg, var(--sky-blue), var(--feather-blue));
+    min-height: 150px;
+    overflow: hidden;
+}
+
+.gallery-placeholder img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+.gallery-item-large .gallery-placeholder {
+    min-height: 330px;
+}
+
+figcaption {
+    color: var(--deep-blue);
+    font-weight: 700;
+    padding: 1rem 1.2rem;
+}
+
+.gallery-item {
+    cursor: pointer;
+}
+
+.gallery-item:focus-visible {
+    outline: 3px solid var(--orange);
+    outline-offset: -3px;
+}
+
+.trivia-section {
+    background: #e8f3f8;
+    padding: 6rem max(2rem, calc((100% - 1080px) / 2));
+}
+
+.quiz-card {
+    background: var(--surface);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    margin-top: 2rem;
+    max-width: 700px;
+    padding: 2rem;
+}
+
+.quiz-progress {
+    color: var(--orange);
+    font-size: 0.85rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.quiz-card h3 {
+    margin: 1rem 0 1.5rem;
+}
+
+.quiz-options {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.quiz-option {
+    background: var(--cream);
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    cursor: pointer;
+    font: inherit;
+    padding: 0.8rem 1rem;
+    text-align: left;
+}
+
+.quiz-option:hover,
+.quiz-option:focus-visible {
+    border-color: var(--sky-blue);
+}
+
+.quiz-option.correct {
+    background: #d7f0dc;
+    border-color: #318b45;
+}
+
+.quiz-option.incorrect {
+    background: #f9dada;
+    border-color: #b63838;
+}
+
+.quiz-feedback {
+    font-weight: 700;
+    margin: 1rem 0 0;
+    min-height: 1.6em;
+}
+
+.quiz-card .button {
+    border: 0;
+    margin-left: 0;
+}
+
+.quiz-card .button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.park-clock-section {
+    background: var(--cream);
+    padding: 6rem max(2rem, calc((100% - 1080px) / 2));
+}
+
+.park-clock-card {
+    align-items: center;
+    background: linear-gradient(135deg, var(--sky-blue), var(--deep-blue));
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    color: var(--white);
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+    max-width: 700px;
+    padding: 2rem;
+}
+
+.clock-face {
+    align-items: center;
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    border-radius: 50%;
+    display: flex;
+    font-size: 3rem;
+    height: 100px;
+    justify-content: center;
+    min-width: 100px;
+}
+
+.clock-time {
+    color: var(--yellow);
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    line-height: 1;
+}
+
+.clock-date {
+    color: var(--white);
+    font-weight: 700;
+    margin-top: 0.65rem;
+    text-transform: capitalize;
+}
+
+.clock-zone {
+    color: var(--yellow);
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-top: 0.2rem;
+}
+
+.clock-message {
+    color: var(--white);
+    margin-top: 0.5rem;
+}
+
+body.night-mode .park-clock-section {
+    background: var(--cream);
+}
+
+body.night-mode .park-clock-section h2 {
+    color: var(--text);
+}
+
+.modal[hidden] {
+    display: none;
+}
+
+.modal {
+    align-items: center;
+    background: rgba(7, 29, 49, 0.78);
+    display: flex;
+    inset: 0;
+    justify-content: center;
+    padding: 1.5rem;
+    position: fixed;
+    z-index: 20;
+}
+
+.modal-content {
+    background: var(--surface);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    max-width: 500px;
+    padding: 2.5rem;
+    position: relative;
+    text-align: center;
+    width: 100%;
+}
+
+.modal-close {
+    background: transparent;
+    border: 0;
+    color: var(--deep-blue);
+    cursor: pointer;
+    font-size: 2rem;
+    line-height: 1;
+    position: absolute;
+    right: 1rem;
+    top: 0.75rem;
+}
+
+.modal-icon {
+    background: linear-gradient(135deg, var(--sky-blue), var(--feather-blue));
+    border-radius: 50%;
+    height: 240px;
+    margin: 0 auto 1rem;
+    overflow: hidden;
+    width: min(100%, 420px);
+}
+
+.modal-icon img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+.modal-content h2 {
+    margin-bottom: 0.75rem;
+}
+
+.site-footer {
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    padding: 2rem max(2rem, calc((100% - 1080px) / 2));
+}
+
+.site-footer a {
+    color: var(--yellow);
+}
+
+.site-footer a:hover,
+.site-footer a:focus-visible {
+    color: var(--white);
+}
+
+:focus-visible {
+    outline: 3px solid var(--orange);
+    outline-offset: 3px;
+}
+
+@media (max-width: 760px) {
+    .main-nav {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.75rem;
+        padding: 1rem;
+    }
+
+    .nav-list {
+        flex-wrap: wrap;
+        gap: 0.6rem 1rem;
+    }
+
+    .hero-section,
+    .about-section {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-section {
+        padding: 4rem 1.5rem;
+    }
+
+    .hero-character {
+        height: 230px;
+        width: 230px;
+    }
+
+    .character-icon {
+        font-size: 5rem;
+    }
+
+    .about-section,
+    .adventures-section,
+    .gallery-section {
+        padding: 4rem 1.5rem;
+    }
+
+    .character-details,
+    .adventure-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-item-large {
+        grid-row: auto;
+    }
+
+    .gallery-item-large .gallery-placeholder {
+        min-height: 220px;
+    }
+
+    .site-footer {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 2rem 1.5rem;
+    }
+
+    .button-secondary {
+        margin-left: 0;
+        margin-top: 0.75rem;
+    }
+
+    .trivia-section {
+        padding: 4rem 1.5rem;
+    }
+
+    .park-clock-section {
+        padding: 4rem 1.5rem;
+    }
+
+    .park-clock-card {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1.25rem;
+        padding: 1.5rem;
+    }
+}
